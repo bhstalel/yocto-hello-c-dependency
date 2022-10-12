@@ -3,4 +3,4 @@
 
 void Hello();
 
-#endif HELLO_H
+#endif
