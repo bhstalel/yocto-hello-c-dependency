@@ -1,13 +1,13 @@
 VER=0.0.1
+LIB=libhello.so
 
-all: hellolib.so
+all: $(LIB)
 
-hellolib.so: hellolib.o
-	$(CC) hellolib.o $(LDFLAGS) -shared -o libhellolib.so.$(VER)
-	
+$(LIB): hellolib.o
+	$(CC) $< $(LDFLAGS) -shared -o $(LIB).$(VER)
 
-hellolib.o: hellolib.c
-	$(CC) -c hellolib.c
+%.o: %.c
+	$(CC) -c $<
 
 clean:
 	rm -rf *.o *.so
