@@ -1,10 +1,11 @@
-VER=0.0.1
+MAJOR=1
+VER=$(MAJOR).0
 LIB=libhello.so
 
 all: $(LIB)
 
 $(LIB): hellolib.o
-	$(CC) $< $(LDFLAGS) -shared -o $(LIB).$(VER)
+	$(CC) $< -Wl,-soname,$(LIB).$(MAJOR) -fPIC $(LDFLAGS) -shared -o $(LIB).$(VER)
 
 %.o: %.c
 	$(CC) -c $<
